@@ -1,6 +1,6 @@
 # bidirectional_QCSP
 
-File "bidirectional_QCSP.cpp": the C++ code of bidirectional_QCSP model, implemented through CPLEX.
+File "bidirectional_QCSP_model.cpp": the C++ code of bidirectional_QCSP model, implemented through CPLEX.
 
 File "bidirectional_QCSP_Benders.cpp": the C++ code of Benders approach, including the lower bound formulation and the unidirectional formulation, implemented through CPLEX.
 
