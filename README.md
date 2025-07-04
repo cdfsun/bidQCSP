@@ -1,4 +1,4 @@
-# bidirectional_QCSP
+# bid-&multi-directionalQCSP
 
 File "bidirectional_QCSP_model.cpp": the C++ code of bidirectional_QCSP model, implemented through CPLEX.
 
