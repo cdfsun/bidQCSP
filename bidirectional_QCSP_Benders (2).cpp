@@ -8,7 +8,7 @@
 
 //#define UserActive//activate the usercallback
 #define _AFXDLL
-//#define OUTBRANCH//Êä³ö·ÖÖ§½Úµã´¦µÄ½â
+//#define OUTBRANCH//è¾“å‡ºåˆ†æ”¯èŠ‚ç‚¹å¤„çš„è§£
 //#define SubTour
 
 using namespace std;
@@ -20,8 +20,8 @@ const   IloInt nbTask = 50;  //number of tasks
 const   IloInt nbBay = 15; //number of bays
 const   IloInt nbCrane = 4; //number of cranes
 
-#define start_instance 1//¿ªÊ¼²âÊÔµÄËãÀı±àºÅ start index of instances
-#define instance_no 10//²âÊÔËãÀıµÄ×î´ó±àºÅ end index of instances
+#define start_instance 1//å¼€å§‹æµ‹è¯•çš„ç®—ä¾‹ç¼–å· start index of instances
+#define instance_no 10//æµ‹è¯•ç®—ä¾‹çš„æœ€å¤§ç¼–å· end index of instances
 
 
 
@@ -68,9 +68,9 @@ int nbb_BD[nbCrane];// start bay of each crane
 
 IloNum GapF2;
 
-#define ModNo 0//Ñ¡ÔñÒªµ÷ÓÃµÄÄ£ĞÍ±àºÅ, 0£ºµÚÒ»ÖÖÒÆ¶¯·½Ê½£¨Ò»´ÎÖ±£¬Ò»´Î»Ø£©£»1£º µÚ¶şÖÖ
+#define ModNo 0//é€‰æ‹©è¦è°ƒç”¨çš„æ¨¡å‹ç¼–å·, 0ï¼šç¬¬ä¸€ç§ç§»åŠ¨æ–¹å¼ï¼ˆä¸€æ¬¡ç›´ï¼Œä¸€æ¬¡å›ï¼‰ï¼›1ï¼š ç¬¬äºŒç§
 
-#define CB_cut_Activate 1  //0 ²»²ÉÓÃ×éºÏcut£¬1 ²ÉÓÃ
+#define CB_cut_Activate 1  //0 ä¸é‡‡ç”¨ç»„åˆcutï¼Œ1 é‡‡ç”¨
 
 #define precedence_ineq
 #define re_ineq
@@ -98,9 +98,9 @@ IloNum GapF2;
 #define LB_Comput
 #define RelaxMP
 
-#define waiting_ineq//¼ÆËãµÈ´ıÊ±¼äµÄÓĞĞ§²»µÈÊ½
+#define waiting_ineq//è®¡ç®—ç­‰å¾…æ—¶é—´çš„æœ‰æ•ˆä¸ç­‰å¼
 #define retracing_ineq
-#define retrace_constraints//Ä£ĞÍÀïÊÇ·ñ°üº¬µÈ´ıÔ¼Êø
+#define retrace_constraints//æ¨¡å‹é‡Œæ˜¯å¦åŒ…å«ç­‰å¾…çº¦æŸ
 
 
 #define lp_tolerance 0.6
@@ -184,8 +184,8 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 
 		for (i = 0; i < nbCrane; ++i)
 		{
-			QC_ind0[i] = 0;//ÊÇ·ñÓĞÎ¥±³Çé¿ö£¬0-·ñ
-			QC_ind[i] = 0;//ÊÇ·ñÇó¹ı×ÓÎÊÌâ£¬0-·ñ
+			QC_ind0[i] = 0;//æ˜¯å¦æœ‰è¿èƒŒæƒ…å†µï¼Œ0-å¦
+			QC_ind[i] = 0;//æ˜¯å¦æ±‚è¿‡å­é—®é¢˜ï¼Œ0-å¦
 		}
 
 		IloNumArray2 yF_best(masterEnv, numNodes);
@@ -226,7 +226,7 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 		//cout << endl << endl;
 
 		////////////////////////////////////////////////////////////////////////
-		////¹¹Ôìcombinatorial cut
+		////æ„é€ combinatorial cut
 		////////////////////////////////////////////////////////////////////////
 
 		for (int k = 0; k < nbCrane; k++)
@@ -331,7 +331,7 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 				}
 			}
 
-			int indic_y1 = 0;//ÊÇ·ñÓĞ±ØÒªÔÙÁí¼Ó
+			int indic_y1 = 0;//æ˜¯å¦æœ‰å¿…è¦å†å¦åŠ 
 			if (Sxi1_time + PrecSyi_time + nbQ[i] + task_Qj > UB)
 			{
 				indic_y1 = 1;
@@ -460,7 +460,7 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 				}
 			}
 
-			int indic_yj = 0;//ÊÇ·ñÓĞ±ØÒªÔÙÁí¼Ó
+			int indic_yj = 0;//æ˜¯å¦æœ‰å¿…è¦å†å¦åŠ 
 			if (Sxj2_time + PrecSyj_time + nbQ[j] + task_Qi > UB)
 			{
 				indic_yj = 1;
@@ -648,7 +648,7 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 
 						}
 
-						int indic_y1y2 = 0;//ÊÇ·ñÓĞ±ØÒªÔÙÁí¼Ó
+						int indic_y1y2 = 0;//æ˜¯å¦æœ‰å¿…è¦å†å¦åŠ 
 						if (Sxi1_time + Sxj2_time + PrecSyi_time + PrecSyj_time + nbQ[i] + nbQ[j] > UB)
 						{
 							new_cb_cut_count++;
@@ -744,7 +744,7 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 			{
 				for (i = 0; i < nbTask; i++)
 				{
-					if (xF2_best[k][i] > lp_tolerance)//ÓĞdetourÁË
+					if (xF2_best[k][i] > lp_tolerance)//æœ‰detouräº†
 					{
 						IloInt R0_sum, R1_sum, R2_sum, RT_sum;
 						R0_sum = 0;
@@ -757,7 +757,7 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 						R1_count = 0;
 						R2_count = 0;
 
-						IloNum sumx = 0;//¼ÆËãÒ»ÏÂ×ó¶ËÏîµÄÄ¿Ç°µÄÖµµÄºÍ
+						IloNum sumx = 0;//è®¡ç®—ä¸€ä¸‹å·¦ç«¯é¡¹çš„ç›®å‰çš„å€¼çš„å’Œ
 
 						sumx += xF2_best[k][i];
 
@@ -869,18 +869,18 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 
 								if (setS1.size() >= 3)
 								{
-									//ÅÅĞò
+									//æ’åº
 									for (int i22 = 0; i22 < setS1.size() - 1; i22++) {
 										for (int j22 = 0; j22 < setS1.size() - 1 - i22; j22++) {
-											if (xF1_best[k - 1][setS1[j22]] < xF1_best[k - 1][setS1[j22 + 1]]) {        // ÏàÁÚÔªËØÁ½Á½¶Ô±È
-												int temp = setS1[j22 + 1];        // ÔªËØ½»»»
+											if (xF1_best[k - 1][setS1[j22]] < xF1_best[k - 1][setS1[j22 + 1]]) {        // ç›¸é‚»å…ƒç´ ä¸¤ä¸¤å¯¹æ¯”
+												int temp = setS1[j22 + 1];        // å…ƒç´ äº¤æ¢
 												setS1[j22 + 1] = setS1[j22];
 												setS1[j22] = temp;
 											}
 											else if (xF1_best[k - 1][setS1[j22]] == xF1_best[k - 1][setS1[j22 + 1]])
 											{
-												if (nbQ[setS1[j22]] < nbQ[setS1[j22 + 1]]) {        // ÏàÁÚÔªËØÁ½Á½¶Ô±È
-													int temp = setS1[j22 + 1];        // ÔªËØ½»»»
+												if (nbQ[setS1[j22]] < nbQ[setS1[j22 + 1]]) {        // ç›¸é‚»å…ƒç´ ä¸¤ä¸¤å¯¹æ¯”
+													int temp = setS1[j22 + 1];        // å…ƒç´ äº¤æ¢
 													setS1[j22 + 1] = setS1[j22];
 													setS1[j22] = temp;
 												}
@@ -888,7 +888,7 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 										}
 									}
 
-									//É¾³ı¶à¸öÔªËØ
+									//åˆ é™¤å¤šä¸ªå…ƒç´ 
 
 									while (setS1.size() >= 1)
 									{
@@ -945,18 +945,18 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 							{
 								if (setS3.size() >= 3)
 								{
-									//ÅÅĞò
+									//æ’åº
 									for (int i22 = 0; i22 < setS3.size() - 1; i22++) {
 										for (int j22 = 0; j22 < setS3.size() - 1 - i22; j22++) {
-											if (xF2_best[k][setS3[j22]] < xF2_best[k][setS3[j22 + 1]]) {        // ÏàÁÚÔªËØÁ½Á½¶Ô±È
-												int temp = setS3[j22 + 1];        // ÔªËØ½»»»
+											if (xF2_best[k][setS3[j22]] < xF2_best[k][setS3[j22 + 1]]) {        // ç›¸é‚»å…ƒç´ ä¸¤ä¸¤å¯¹æ¯”
+												int temp = setS3[j22 + 1];        // å…ƒç´ äº¤æ¢
 												setS3[j22 + 1] = setS3[j22];
 												setS3[j22] = temp;
 											}
 											else if (xF2_best[k][setS3[j22]] == xF2_best[k][setS3[j22 + 1]])
 											{
-												if (nbQ[setS3[j22]] < nbQ[setS3[j22 + 1]]) {        // ÏàÁÚÔªËØÁ½Á½¶Ô±È
-													int temp = setS3[j22 + 1];        // ÔªËØ½»»»
+												if (nbQ[setS3[j22]] < nbQ[setS3[j22 + 1]]) {        // ç›¸é‚»å…ƒç´ ä¸¤ä¸¤å¯¹æ¯”
+													int temp = setS3[j22 + 1];        // å…ƒç´ äº¤æ¢
 													setS3[j22 + 1] = setS3[j22];
 													setS3[j22] = temp;
 												}
@@ -964,7 +964,7 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 										}
 									}
 
-									//É¾³ı¶à¸öÔªËØ
+									//åˆ é™¤å¤šä¸ªå…ƒç´ 
 
 									while (setS3.size() >= 1)
 									{
@@ -1062,7 +1062,7 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 						IloExpr cbcut2r(masterEnv);
 						IloExpr cbcutTr(masterEnv);
 
-						IloNum sumx = 0;//¼ÆËãÒ»ÏÂ×ó¶ËÏîµÄÄ¿Ç°µÄÖµµÄºÍ
+						IloNum sumx = 0;//è®¡ç®—ä¸€ä¸‹å·¦ç«¯é¡¹çš„ç›®å‰çš„å€¼çš„å’Œ
 
 						sumx += xF1_best[k][i];
 
@@ -1169,18 +1169,18 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 
 								if (setS1.size() >= 3)
 								{
-									//ÅÅĞò
+									//æ’åº
 									for (int i22 = 0; i22 < setS1.size() - 1; i22++) {
 										for (int j22 = 0; j22 < setS1.size() - 1 - i22; j22++) {
-											if (xF1_best[k - 1][setS1[j22]] < xF1_best[k - 1][setS1[j22 + 1]]) {        // ÏàÁÚÔªËØÁ½Á½¶Ô±È
-												int temp = setS1[j22 + 1];        // ÔªËØ½»»»
+											if (xF1_best[k - 1][setS1[j22]] < xF1_best[k - 1][setS1[j22 + 1]]) {        // ç›¸é‚»å…ƒç´ ä¸¤ä¸¤å¯¹æ¯”
+												int temp = setS1[j22 + 1];        // å…ƒç´ äº¤æ¢
 												setS1[j22 + 1] = setS1[j22];
 												setS1[j22] = temp;
 											}
 											else if (xF1_best[k - 1][setS1[j22]] == xF1_best[k - 1][setS1[j22 + 1]])
 											{
-												if (nbQ[setS1[j22]] < nbQ[setS1[j22 + 1]]) {        // ÏàÁÚÔªËØÁ½Á½¶Ô±È
-													int temp = setS1[j22 + 1];        // ÔªËØ½»»»
+												if (nbQ[setS1[j22]] < nbQ[setS1[j22 + 1]]) {        // ç›¸é‚»å…ƒç´ ä¸¤ä¸¤å¯¹æ¯”
+													int temp = setS1[j22 + 1];        // å…ƒç´ äº¤æ¢
 													setS1[j22 + 1] = setS1[j22];
 													setS1[j22] = temp;
 												}
@@ -1188,7 +1188,7 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 										}
 									}
 
-									//É¾³ı¶à¸öÔªËØ
+									//åˆ é™¤å¤šä¸ªå…ƒç´ 
 
 									while (setS1.size() >= 1)
 									{
@@ -1246,18 +1246,18 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 							{
 								if (setS3.size() >= 3)
 								{
-									//ÅÅĞò
+									//æ’åº
 									for (int i22 = 0; i22 < setS3.size() - 1; i22++) {
 										for (int j22 = 0; j22 < setS3.size() - 1 - i22; j22++) {
-											if (xF2_best[k - 1][setS3[j22]] < xF2_best[k - 1][setS3[j22 + 1]]) {        // ÏàÁÚÔªËØÁ½Á½¶Ô±È
-												int temp = setS3[j22 + 1];        // ÔªËØ½»»»
+											if (xF2_best[k - 1][setS3[j22]] < xF2_best[k - 1][setS3[j22 + 1]]) {        // ç›¸é‚»å…ƒç´ ä¸¤ä¸¤å¯¹æ¯”
+												int temp = setS3[j22 + 1];        // å…ƒç´ äº¤æ¢
 												setS3[j22 + 1] = setS3[j22];
 												setS3[j22] = temp;
 											}
 											else if (xF2_best[k - 1][setS3[j22]] == xF2_best[k - 1][setS3[j22 + 1]])
 											{
-												if (nbQ[setS3[j22]] < nbQ[setS3[j22 + 1]]) {        // ÏàÁÚÔªËØÁ½Á½¶Ô±È
-													int temp = setS3[j22 + 1];        // ÔªËØ½»»»
+												if (nbQ[setS3[j22]] < nbQ[setS3[j22 + 1]]) {        // ç›¸é‚»å…ƒç´ ä¸¤ä¸¤å¯¹æ¯”
+													int temp = setS3[j22 + 1];        // å…ƒç´ äº¤æ¢
 													setS3[j22 + 1] = setS3[j22];
 													setS3[j22] = temp;
 												}
@@ -1265,7 +1265,7 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 										}
 									}
 
-									//É¾³ı¶à¸öÔªËØ
+									//åˆ é™¤å¤šä¸ªå…ƒç´ 
 
 									while (setS3.size() >= 1)
 									{
@@ -1448,7 +1448,7 @@ ILOLAZYCONSTRAINTCALLBACK7(BendersLazyCallback, BoolVarMatrix, yF, NumVarMatrix,
 		duration_SP += (double)(finish_SP - start_SP) / CLOCKS_PER_SEC;
 
 		////////////////////////////////////////////////////////////////////////
-		////¹¹Ôìcombinatorial cut
+		////æ„é€ combinatorial cut
 		////////////////////////////////////////////////////////////////////////
 
 
@@ -1486,7 +1486,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 
 	for (int my = start_instance; my <= instance_no; my++)
 	{
-		cout << "data-" << my << "Êı¾İÔËĞĞÖĞ..." << endl;
+		cout << "data-" << my << "æ•°æ®è¿è¡Œä¸­..." << endl;
 		char* filename;
 		char dream[100] = "test/data";
 		filename = dream;
@@ -1496,13 +1496,13 @@ int _tmain(int argc, char* argv[], char* envp[])
 		char C4[3];
 		itoa(my, C1, 10);
 
-		//´Ë´¦¿É±à¼­¹æÄ££¬ÒÔÊäÈë
+		//æ­¤å¤„å¯ç¼–è¾‘è§„æ¨¡ï¼Œä»¥è¾“å…¥
 		itoa(nbBay, C2, 10);
 		itoa(nbCrane, C3, 10);
 		itoa(nbTask, C4, 10);
 
 		strcpy(filename, "test/");
-		//´Ë´¦¿É±à¼­¹æÄ££¬ÒÔÊäÈë
+		//æ­¤å¤„å¯ç¼–è¾‘è§„æ¨¡ï¼Œä»¥è¾“å…¥
 		strcat(filename, C4);
 		strcat(filename, "-");
 		strcat(filename, C2);
@@ -1539,7 +1539,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 			convex = atoi(argv[1]) == 0 ? IloTrue : IloFalse;
 
 		//*************************//
-		//     ´ò¿ªÎÄ¼şdata.txt    //
+		//     æ‰“å¼€æ–‡ä»¶data.txt    //
 		//*************************//
 		ifstream fin(filename);
 		IloEnv env;
@@ -1547,22 +1547,22 @@ int _tmain(int argc, char* argv[], char* envp[])
 		try
 		{
 
-			//	¶¨ÒåÔ­ÎÊÌâÄ£ĞÍ
+			//	å®šä¹‰åŸé—®é¢˜æ¨¡å‹
 			IloModel model(env);
 
 			IloNum gap;
 
-			//	¶¨ÒåÁÙÊ±±äÁ¿
+			//	å®šä¹‰ä¸´æ—¶å˜é‡
 			IloInt i, k, j, t, kk;
 
-			//	¶¨ÒåÁ¬Ğø¾ö²ß±äÁ¿CF
+			//	å®šä¹‰è¿ç»­å†³ç­–å˜é‡CF
 			IloIntVar   CF(env, 0, 1800);
 
-			//IloNumArray tem_C(env, nbCrane);// ×ÓÎÊÌâ¼ÆËãµÄcompletion time
+			//IloNumArray tem_C(env, nbCrane);// å­é—®é¢˜è®¡ç®—çš„completion time
 			IloNumVarArray QC_CF(env, nbCrane, 0, IloInfinity);// each QC's completion time
 			IloNumVarArray Task_CF(env, nbTask, 0, IloInfinity);// each task's completion time
 
-			//	¶¨Òå¾ö²ß±äÁ¿xF,CxF,CzF
+			//	å®šä¹‰å†³ç­–å˜é‡xF,CxF,CzF
 			BoolVarMatrix xF(env, nbCrane);
 			for (k = 0; k < nbCrane; k++)
 			{
@@ -1595,9 +1595,9 @@ int _tmain(int argc, char* argv[], char* envp[])
 			for (k = 0; k < nbCrane; k++)
 				mF[k] = IloNumVarArray(env, nbBay, 0, IloInfinity);
 			//**********************************//
-			//            ĞÂ±äÁ¿           //
+			//            æ–°å˜é‡           //
 			//**********************************//
-			//	¶¨Òå±£´æ¾ö²ß±äÁ¿xF,CxF,CzFµÄ×îÓÅÖµ
+			//	å®šä¹‰ä¿å­˜å†³ç­–å˜é‡xF,CxF,CzFçš„æœ€ä¼˜å€¼
 			BoolMatrix xF_best(env, nbCrane);
 			for (k = 0; k < nbCrane; k++)
 			{
@@ -1642,7 +1642,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 			IloIntArray left_bay(env, nbCrane);
 			IloIntArray right_bay(env, nbCrane);
 
-			///////////²âÊÔÓÃ
+			///////////æµ‹è¯•ç”¨
 			BoolMatrix2 FxF_best(env);
 			for (k = 0; k < nbCrane; k++)
 			{
@@ -1678,21 +1678,21 @@ int _tmain(int argc, char* argv[], char* envp[])
 				CwF_best[k] = IloNumArray(env, nbBay);
 
 			//*******************************************************//
-			//                 ¶¨ÒåÖ÷ÎÊÌâÊä³öµÄ²ÎÊı                         //
+			//                 å®šä¹‰ä¸»é—®é¢˜è¾“å‡ºçš„å‚æ•°                         //
 			//*******************************************************// 	 
 
-			//Ô¼ÊøÖĞ²ÎÊı
-			//	¶¨ÒåĞè´úÈë×ÓÎÊÌâ¼ÆËãµÄwork zoneÊıÄ¿
+			//çº¦æŸä¸­å‚æ•°
+			//	å®šä¹‰éœ€ä»£å…¥å­é—®é¢˜è®¡ç®—çš„work zoneæ•°ç›®
 			IloInt   nbn;
-			//¶¨Òå work zone ÆğÊ¼ section
+			//å®šä¹‰ work zone èµ·å§‹ section
 			IloIntArray nbn_start(env, nbBay);
-			//	¶¨Òå work zone ÖÕÖ¹ section
+			//	å®šä¹‰ work zone ç»ˆæ­¢ section
 			IloIntArray  nbn_end(env, nbBay);
-			//	¶¨ÒåÃ¿¸öwork zoneµÄcrane¸öÊı
+			//	å®šä¹‰æ¯ä¸ªwork zoneçš„craneä¸ªæ•°
 			IloIntArray  nbn_crane_no(env, nbBay);
-			//	¶¨ÒåÃ¿¸öwork zoneµÄ×îºóÒ»¸öcraneµÄ±àºÅ
+			//	å®šä¹‰æ¯ä¸ªwork zoneçš„æœ€åä¸€ä¸ªcraneçš„ç¼–å·
 			IloIntArray  nbn_crane_index(env, nbBay);
-			//	¶¨ÒåÃ¿¸öwork zoneµÄµÚÒ»¸öcraneµÄ±àºÅ
+			//	å®šä¹‰æ¯ä¸ªwork zoneçš„ç¬¬ä¸€ä¸ªcraneçš„ç¼–å·
 			IloIntArray  nbn_crane_start(env, nbBay);
 
 
@@ -1709,37 +1709,37 @@ int _tmain(int argc, char* argv[], char* envp[])
 			BC_node_count = 0;
 
 			//*******************************************************//
-			//                 ¶¨ÒåÊäÈë²ÎÊı                          //
+			//                 å®šä¹‰è¾“å…¥å‚æ•°                          //
 			//*******************************************************// 	 
-			//Ô¼ÊøÖĞ²ÎÊı
-			//	¶¨ÒåÄÜÁ¦³£Á¿²ÎÊıs
+			//çº¦æŸä¸­å‚æ•°
+			//	å®šä¹‰èƒ½åŠ›å¸¸é‡å‚æ•°s
 			IloNum   nbs;
-			//¶¨Òåµõ»úÎ»ÖÃ³õÊ¼×´Ì¬²ÎÊı
+			//å®šä¹‰åŠæœºä½ç½®åˆå§‹çŠ¶æ€å‚æ•°
 			IloBoolArray nbb(env, nbCrane);
-			//	¶¨ÒåÈÎÎñÁ¿²ÎÊınbQ
+			//	å®šä¹‰ä»»åŠ¡é‡å‚æ•°nbQ
 			IloNumArray  nbQ(env, nbTask);
 
 			IloNum  aveQ = 0;
 
 			IloIntArray  nbreadyT(env, nbCrane);
 
-			//	¶¨ÒåÈÎÎñËùÔÚ±´Î»²ÎÊınbQ
+			//	å®šä¹‰ä»»åŠ¡æ‰€åœ¨è´ä½å‚æ•°nbQ
 			IloIntArray  nbLocation(env, nbTask);
 
-			BoolMatrix nbprecR(env, nbTask);//ÓÅÏÈ¼¶¹ØÏµ
+			BoolMatrix nbprecR(env, nbTask);//ä¼˜å…ˆçº§å…³ç³»
 			for (i = 0; i < nbTask; i++)  nbprecR[i] = IloBoolArray(env, nbTask);
 			for (int ai = 0; ai < nbTask; ai++)
 				for (int bi = 0; bi < nbTask; bi++)
 					nbprecR[ai][bi] = 0;
 
 			//*******************************************************//
-			//                 ¶¨Òåcallback²ÎÊı                      //
+			//                 å®šä¹‰callbackå‚æ•°                      //
 			//*******************************************************// 	 
 
 
 
 			//*******************************************************//
-			//                 ¶ÁÈë²ÎÊıÊı¾İ                          //
+			//                 è¯»å…¥å‚æ•°æ•°æ®                          //
 			//*******************************************************// 	 
 
 			IloIntArray ls1(env, 8);
@@ -1758,7 +1758,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 				nbb_BD[i] = nbb[i];
 
 
-			////¶ÁÈëÊı¾İnbLocation[i]
+			////è¯»å…¥æ•°æ®nbLocation[i]
 			//for (i = 0; i < nbTask; i++)
 			//{
 			//	//fin >> nbLocation[i];
@@ -1766,7 +1766,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 			//}
 			////cout<<endl;
 
-			////	¶ÁÈëÊı¾İnbb[i]
+			////	è¯»å…¥æ•°æ®nbb[i]
 			//for (i = 0; i < nbCrane; i++)
 			//{
 			//	//fin >> nbb[i];
@@ -1776,7 +1776,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 
 			IloIntArray prec(env, 2);
 
-			//	¶ÁÈëÊı¾İnbprecR
+			//	è¯»å…¥æ•°æ®nbprecR
 			for (i = 0; i < ls1[2]; i++)
 			{
 				fin >> prec;
@@ -1842,7 +1842,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 			for (j = 0; j < nbTask; j++)
 				botom_task_index[nbLocation[j] - 1] = j;
 
-			////Îª¼Ócut¶¨ÒåµÄ¸¨ÖúÊı×é£¬±ÜÃâÖØ¸´¼Ócut
+			////ä¸ºåŠ cutå®šä¹‰çš„è¾…åŠ©æ•°ç»„ï¼Œé¿å…é‡å¤åŠ cut
 			int botom_violate_task[nbCrane][nbBay];
 			for (i = 0; i < nbBay; i++)
 				for (k = 0; k < nbCrane; k++)
@@ -1860,7 +1860,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 
 
 			//************************************************************************************//
-			//      ÖÁ´ËÒÑÖªÊı¾İÊäÈëÍê±Ï                                                          //
+			//      è‡³æ­¤å·²çŸ¥æ•°æ®è¾“å…¥å®Œæ¯•                                                          //
 			//************************************************************************************//
 			char* filename1;
 			char dream1[100] = "result/C_data";
@@ -1868,13 +1868,13 @@ int _tmain(int argc, char* argv[], char* envp[])
 
 			itoa(my, C1, 10);
 
-			//´Ë´¦¿É±à¼­¹æÄ££¬ÒÔÊäÈë
+			//æ­¤å¤„å¯ç¼–è¾‘è§„æ¨¡ï¼Œä»¥è¾“å…¥
 			itoa(nbBay, C2, 10);
 			itoa(nbCrane, C3, 10);
 			itoa(nbTask, C4, 10);
 
 			strcpy(filename1, "result/");
-			//´Ë´¦¿É±à¼­¹æÄ££¬ÒÔÊäÈë
+			//æ­¤å¤„å¯ç¼–è¾‘è§„æ¨¡ï¼Œä»¥è¾“å…¥
 			strcat(filename1, C4);
 			strcat(filename1, "-");
 			strcat(filename1, C2);
@@ -1909,10 +1909,10 @@ int _tmain(int argc, char* argv[], char* envp[])
 			}
 
 			//*******************************************************//
-			//                 ½¨Á¢Ö÷ÎÊÌâ CBMP                       //
+			//                 å»ºç«‹ä¸»é—®é¢˜ CBMP                       //
 			//*******************************************************// 
-			int sumiter = 0;//Í³¼Æµü´úÊıÄ¿
-			int ind_direction = 0; // 0 - ×óÓÒ£¬1 - ÓÒ×ó
+			int sumiter = 0;//ç»Ÿè®¡è¿­ä»£æ•°ç›®
+			int ind_direction = 0; // 0 - å·¦å³ï¼Œ1 - å³å·¦
 			IloNum UB0;
 			UB = UB0 = bigM;
 
@@ -2036,7 +2036,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 
 			int cut_ind_0 = 0;
 
-			if (LB0 - UB0 < 1 && UB0 - LB0 < 1)//½âÖÁ×îÓÅ×îÓÅ
+			if (LB0 - UB0 < 1 && UB0 - LB0 < 1)//è§£è‡³æœ€ä¼˜æœ€ä¼˜
 			{
 				model.end();
 				cut_ind_0 = 1;
@@ -2102,7 +2102,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 
 
 			//**********************************//
-			//             Benders Ö÷Ëã·¨           //
+			//             Benders ä¸»ç®—æ³•           //
 			//**********************************//	
 
 			gap = 100;
@@ -2116,7 +2116,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 
 
 			//**********************************//
-			//             Benders ×ÓÎÊÌâ           //
+			//             Benders å­é—®é¢˜           //
 			//**********************************//	
 
 			IloCplex subcplex(subEnv);
@@ -2139,7 +2139,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 
 
 			//**********************************//
-			//            ¿ªÊ¼Çó½â		        //
+			//            å¼€å§‹æ±‚è§£		        //
 			//**********************************//
 
 
@@ -2156,22 +2156,22 @@ int _tmain(int argc, char* argv[], char* envp[])
 			//cout<<"h0 "<<h0<<endl;
 			if (!h1)
 			{
-				cout << "\nno feasible solution has been found£¬algorithm terminate" << endl;
-				fout << "\nno feasible solution has been found£¬algorithm terminate" << endl;
+				cout << "\nno feasible solution has been foundï¼Œalgorithm terminate" << endl;
+				fout << "\nno feasible solution has been foundï¼Œalgorithm terminate" << endl;
 				cplex.clearModel();
 				cplex.clear();
 				cplex.end();
 				model.end();
 
 				//sumiter++;
-				goto out_end;//´ËLBÏÂÃ»ÓĞ¿ÉĞĞ½â£¬Òò´ËËã·¨½áÊø
+				goto out_end;//æ­¤LBä¸‹æ²¡æœ‰å¯è¡Œè§£ï¼Œå› æ­¤ç®—æ³•ç»“æŸ
 
 				//break;
 
 				//return false;
 			}
 			//**********************************//
-			//             ¼ÇÂ¼CBMP×îºÃ½â       //
+			//             è®°å½•CBMPæœ€å¥½è§£       //
 			//**********************************//
 			//ObjVal = cplex.getValue(CF);
 			//LB=cplex.getValue(CF);
@@ -2206,12 +2206,12 @@ int _tmain(int argc, char* argv[], char* envp[])
 
 
 			//**********************************//
-			//             Êä³ö×îºÃ½â           //
+			//             è¾“å‡ºæœ€å¥½è§£           //
 			//**********************************//	
 
 
 				//**********************************//
-				//             ¼ÆËãÏÂ½ç           //
+				//             è®¡ç®—ä¸‹ç•Œ           //
 				//**********************************//	
 		out_end:		//cout << "update_no: " << update_no << endl;
 
@@ -2219,17 +2219,17 @@ int _tmain(int argc, char* argv[], char* envp[])
 
 
 			//**********************************//
-			//             ¼ÆËãÄ¿±êÖµ           //
+			//             è®¡ç®—ç›®æ ‡å€¼           //
 			//**********************************//	
 
 			//double a,b; 
 			//a=0,b=0;
-			////	¼ÆËãOBJ1
+			////	è®¡ç®—OBJ1
 			////for(i = 0; i < nbMaterial; i++)for(j = 0; j < nbBay; j++) for(k = 0; k < nbBay; k++) a+=nbcF[i][j][k]*xF_best[i][j][k];			
 			////for(j = 0; j < nbBay; j++) for(k = 0; k < nbBay; k++) a+=nNs*wF_best[k][k];
 
 
-			////¼ÆËãOBJ2
+			////è®¡ç®—OBJ2
 			//b=CF_best;
 
 			//GapAve[my-1]=gap;
@@ -2407,7 +2407,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 	string thefilename1 = "result_report.csv";
 
 	for (int i = start_instance; i <= instance_no; i++) {
-		oFile1.open(thefilename1, ios::app);//| ios::trunc // ÕâÑù¾ÍºÜÈİÒ×µÄÊä³öÒ»¸öĞèÒªµÄexcel ÎÄ¼ş  
+		oFile1.open(thefilename1, ios::app);//| ios::trunc // è¿™æ ·å°±å¾ˆå®¹æ˜“çš„è¾“å‡ºä¸€ä¸ªéœ€è¦çš„excel æ–‡ä»¶  
 
 		oFile1 << i << "," << nbTask << "," << multiple_1 * ObjAve[i - start_instance] << "," << lowerBound[i - start_instance] << "," << upperBound[i - start_instance] << ","
 			<< cut37[i - start_instance] << "," << cut38[i - start_instance] << "," << cut43[i - start_instance] << "," << cut44[i - start_instance] << "," << cut45[i - start_instance] << ","
@@ -2439,7 +2439,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 //
 //
 //	//**********************************//
-//	//                  ÎÊÌâ±äÁ¿        //
+//	//                  é—®é¢˜å˜é‡        //
 //	//**********************************//
 //
 //	/////important////
@@ -2476,18 +2476,18 @@ int _tmain(int argc, char* argv[], char* envp[])
 //
 //
 //	//**********************************//
-//	//            Ô­ÎÊÌâÄ¿±êº¯Êı        //
+//	//            åŸé—®é¢˜ç›®æ ‡å‡½æ•°        //
 //	//**********************************//
 //
 //	//IloExpr obj1(env); 
 //
 //
 //	IloExpr  obj2(env);
-//	//  ½¨Á¢×ÓÎÊÌâÄ¿±êº¯Êı±í´ïÊ½ 
+//	//  å»ºç«‹å­é—®é¢˜ç›®æ ‡å‡½æ•°è¡¨è¾¾å¼ 
 //
 //	obj2 += CF;
 //
-//	//	½«Ä¿±êº¯Êı¼ÓÈëµ½Ô­ÎÊÌâÄ£ĞÍ
+//	//	å°†ç›®æ ‡å‡½æ•°åŠ å…¥åˆ°åŸé—®é¢˜æ¨¡å‹
 //	model.add(IloMinimize(env, obj2));//
 //	//obj1.end();
 //	obj2.end();
@@ -2496,7 +2496,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 //	//model.add(CF<= *UB_Fun);
 //
 //	//**********************************//
-//	//            MPÎÊÌâ Ô¼Êø           //
+//	//            MPé—®é¢˜ çº¦æŸ           //
 //	//**********************************//
 //
 //	IloRangeArray  c16b(env);
@@ -2564,7 +2564,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 //	model.add(c16d);
 //	c16d.end();
 //
-//	//Ô¼Êø£¨16e£©
+//	//çº¦æŸï¼ˆ16eï¼‰
 //	IloRangeArray  c16e(env);
 //	for (k = 0; k < nbCrane - 1; k++)
 //		for (i = 0; i < nbBay - 1 - safe_margin; i++)
@@ -2627,7 +2627,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 //			epa.end();
 //		}
 //
-//	//Ô¼Êø£¨16h£©
+//	//çº¦æŸï¼ˆ16hï¼‰
 //	IloRangeArray  c16h(env);
 //	for (k = 0; k < nbCrane; k++)
 //	{
@@ -2656,7 +2656,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 //		epa.end();
 //	}
 //
-//	//	½¨Á¢Ô¼Êø(16jk)
+//	//	å»ºç«‹çº¦æŸ(16jk)
 //	IloRangeArray  c16jk(env);
 //	for (k = 0; k < nbCrane - 1; k++)
 //	{
@@ -2677,7 +2677,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 //	c16jk.end();
 //
 //
-//	//16l, ¶¨ÒåTF
+//	//16l, å®šä¹‰TF
 //	for (k = 0; k < nbCrane; k++)
 //	{
 //		for (i = 0; i < nbBay; i++)
@@ -2709,7 +2709,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 //
 //
 //
-//	////endCzFÈ¡Öµ
+//	////endCzFå–å€¼
 //	for (k = 0; k < nbCrane; k++)
 //		for (j = 0; j < nbTask; j++)
 //			if (nbLocation[j] > 1)			
@@ -2741,7 +2741,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 //	c00.end();
 //
 //
-//	////////Ô¼Êø£¨6£©// start_zFÈ¡Öµ
+//	////////çº¦æŸï¼ˆ6ï¼‰// start_zFå–å€¼
 //
 //	for (j = 0; j < nbTask; j++)
 //		if (nbLocation[j] < nbBay)
@@ -2815,7 +2815,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 //
 //
 //	//**********************************//
-//	//            ÓĞĞ§²»µÈÊ½          //
+//	//            æœ‰æ•ˆä¸ç­‰å¼          //
 //	//**********************************//
 //
 //		//
@@ -2922,10 +2922,10 @@ int _tmain(int argc, char* argv[], char* envp[])
 //#endif
 //
 //	////**********************************//
-//	////            ËÉ³ÚÔ¼Êø          //
+//	////            æ¾å¼›çº¦æŸ          //
 //	////**********************************//
 //
-//	//±äÁ¿¹Ì¶¨
+//	//å˜é‡å›ºå®š
 //	for (k = 0; k < nbCrane; k++)
 //		for (i = 0; i < nbTask; i++)
 //			model.add(xF1[k][i] + xF2[k][i] - yF[k][i] == 0);
@@ -3000,7 +3000,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 //
 //
 //
-//	////Ô¼Êø£¨7£© zF unique
+//	////çº¦æŸï¼ˆ7ï¼‰ zF unique
 //	//IloRangeArray  c70(env);
 //	//for (k = 0; k < nbCrane; k++)
 //	//{
@@ -3025,7 +3025,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 //	//c70.end();
 //
 //
-//	////	½¨Á¢Ô¼Êø(8)  z ºÍ zÖ®¼ä¸ô /delta +1
+//	////	å»ºç«‹çº¦æŸ(8)  z å’Œ zä¹‹é—´éš” /delta +1
 //	//IloRangeArray  c80(env);
 //	//for (k = 0; k < nbCrane - 1; k++)
 //	//{
@@ -3062,7 +3062,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 //
 //	//////////////////sub-problem
 //
-//	// vF È¡Öµ(2)
+//	// vF å–å€¼(2)
 //	for (k = 0; k < nbCrane; k++)
 //	{
 //		IloExpr  epa(env);
@@ -3131,7 +3131,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 //				epa4.end();
 //			}
 //
-//			//ºÜÓĞĞ§¹û
+//			//å¾ˆæœ‰æ•ˆæœ
 //			for (int kk = 0; kk <= k; kk++)
 //			{
 //				model.add(xF2[k][j] + xF1[kk][i] - vF[kk] <= 1);
@@ -3178,7 +3178,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 //
 //	//	}
 //
-//	///////Ô¼Êø£¨3£©
+//	///////çº¦æŸï¼ˆ3ï¼‰
 //	//IloRangeArray  c30(env);
 //	//for (i = 0; i < nbBay - 1 - safe_margin; i++)
 //	//	for (k = 0; k < nbCrane - 1; k++)
@@ -3268,7 +3268,7 @@ bool MPmodel(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloI
 
 
 	//**********************************//
-	//                  ÎÊÌâ±äÁ¿        //
+	//                  é—®é¢˜å˜é‡        //
 	//**********************************//
 
 	/////important////
@@ -3305,18 +3305,18 @@ bool MPmodel(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloI
 
 
 	//**********************************//
-	//            Ô­ÎÊÌâÄ¿±êº¯Êı        //
+	//            åŸé—®é¢˜ç›®æ ‡å‡½æ•°        //
 	//**********************************//
 
 	//IloExpr obj1(env); 
 
 
 	IloExpr  obj2(env);
-	//  ½¨Á¢×ÓÎÊÌâÄ¿±êº¯Êı±í´ïÊ½ 
+	//  å»ºç«‹å­é—®é¢˜ç›®æ ‡å‡½æ•°è¡¨è¾¾å¼ 
 
 	obj2 += CF;
 
-	//	½«Ä¿±êº¯Êı¼ÓÈëµ½Ô­ÎÊÌâÄ£ĞÍ
+	//	å°†ç›®æ ‡å‡½æ•°åŠ å…¥åˆ°åŸé—®é¢˜æ¨¡å‹
 	model.add(IloMinimize(env, obj2));//
 	//obj1.end();
 	obj2.end();
@@ -3325,7 +3325,7 @@ bool MPmodel(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloI
 	//model.add(CF<= *UB_Fun);
 
 	//**********************************//
-	//            MPÎÊÌâ Ô¼Êø           //
+	//            MPé—®é¢˜ çº¦æŸ           //
 	//**********************************//
 
 	IloRangeArray  c16b(env);
@@ -3393,7 +3393,7 @@ bool MPmodel(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloI
 	model.add(c16d);
 	c16d.end();
 
-	//Ô¼Êø£¨16e£©
+	//çº¦æŸï¼ˆ16eï¼‰
 	IloRangeArray  c16e(env);
 	for (k = 0; k < nbCrane - 1; k++)
 		for (i = 0; i < nbBay - 1 - safe_margin; i++)
@@ -3456,7 +3456,7 @@ bool MPmodel(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloI
 			epa.end();
 		}
 
-	//Ô¼Êø£¨16h£©
+	//çº¦æŸï¼ˆ16hï¼‰
 	IloRangeArray  c16h(env);
 	for (k = 0; k < nbCrane; k++)
 	{
@@ -3485,7 +3485,7 @@ bool MPmodel(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloI
 		epa.end();
 	}
 
-	//	½¨Á¢Ô¼Êø(16jk)
+	//	å»ºç«‹çº¦æŸ(16jk)
 	IloRangeArray  c16jk(env);
 	for (k = 0; k < nbCrane - 1; k++)
 	{
@@ -3506,7 +3506,7 @@ bool MPmodel(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloI
 	c16jk.end();
 
 
-	//16l, ¶¨ÒåTF
+	//16l, å®šä¹‰TF
 	for (k = 0; k < nbCrane; k++)
 	{
 		for (i = 0; i < nbBay; i++)
@@ -3538,7 +3538,7 @@ bool MPmodel(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloI
 
 
 
-	////endCzFÈ¡Öµ
+	////endCzFå–å€¼
 	for (k = 0; k < nbCrane; k++)
 		for (j = 0; j < nbTask; j++)
 			if (nbLocation[j] > 1)
@@ -3570,7 +3570,7 @@ bool MPmodel(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloI
 	c00.end();
 
 
-	////////Ô¼Êø£¨6£©// start_zFÈ¡Öµ
+	////////çº¦æŸï¼ˆ6ï¼‰// start_zFå–å€¼
 
 	for (j = 0; j < nbTask; j++)
 		if (nbLocation[j] < nbBay)
@@ -3825,7 +3825,7 @@ bool MPmodel(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloI
 		{
 			for (i = 0; i < nbTask; i++)
 			{
-				if (k >= 1)//if (xF2_best[k][i] > lp_tolerance)//ÓĞdetourÁË
+				if (k >= 1)//if (xF2_best[k][i] > lp_tolerance)//æœ‰detouräº†
 				{
 					IloExpr cbcut0r(env);
 					IloExpr cbcut1r(env);
@@ -3926,7 +3926,7 @@ bool MPmodel(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloI
 #endif	
 
 	//**********************************//
-	//            ÓĞĞ§²»µÈÊ½          //
+	//            æœ‰æ•ˆä¸ç­‰å¼          //
 	//**********************************//
 
 		//
@@ -3993,7 +3993,21 @@ bool MPmodel(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloI
 					model.add(epa + 1 >= 0);
 					epa.end();
 				}
-
+				if(i<nbTask-2 && j< nbTask -1)
+				{
+					for (int j2 = j + 1; j2 < nbTask; j2++)
+						if(nbprecR[j][j2] == 1)
+						{ 
+							for (k = 0; k < nbCrane - 1; k++)
+							{
+								IloExpr epa(env);
+								for (int k2 = k + 1; k2 < nbCrane; k2++)
+									epa += yF[k2][j];
+								model.add(epa + yF[k][i] + yF[k][j2] >= 0);
+								epa.end();
+							}
+						}
+				}
 			}
 
 
@@ -4069,10 +4083,10 @@ bool MPmodel(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloI
 
 
 	////**********************************//
-	////            ËÉ³ÚÔ¼Êø          //
+	////            æ¾å¼›çº¦æŸ          //
 	////**********************************//
 
-	//±äÁ¿¹Ì¶¨
+	//å˜é‡å›ºå®š
 	for (k = 0; k < nbCrane; k++)
 		for (i = 0; i < nbTask; i++)
 			model.add(xF1[k][i] + xF2[k][i] - yF[k][i] == 0);
@@ -4184,7 +4198,7 @@ bool MPmodel(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloI
 						epa4.end();
 					}
 
-					//ºÜÓĞĞ§¹û
+					//å¾ˆæœ‰æ•ˆæœ
 					for (int kk = 0; kk <= k; kk++)
 					{
 						model.add(xF2[k][j] + xF1[kk][i] - vF[kk] <= 1);
@@ -4224,10 +4238,10 @@ bool SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloIntA
 	IloEnv env = model.getEnv();
 	IloInt i, j, k;
 
-	//ÎÊÌâÄ£ĞÍ
+	//é—®é¢˜æ¨¡å‹
 	IloModel submodel(env);
 
-	//ÎÊÌâÄ£ĞÍ
+	//é—®é¢˜æ¨¡å‹
 	IloNumVarArray t0kF(env, nbCrane, 0, 100);
 	IloNumVarArray gammaF(env, nbCrane, 0, 100);//
 
@@ -4264,21 +4278,21 @@ bool SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloIntA
 
 
 	//**********************************//
-	//           objective Ô­ÎÊÌâÄ¿±êº¯Êı        //
+	//           objective åŸé—®é¢˜ç›®æ ‡å‡½æ•°        //
 	//**********************************//
 
 	//IloExpr obj1(env); 
 
 
 	IloExpr  obj2(env);
-	//  ½¨Á¢×ÓÎÊÌâÄ¿±êº¯Êı±í´ïÊ½ 
+	//  å»ºç«‹å­é—®é¢˜ç›®æ ‡å‡½æ•°è¡¨è¾¾å¼ 
 
 	obj2 += CF;
 
 	//for (k = 0; k < nbCrane; k++)
 	//	obj2 += chaF[k];
 
-	//	½«Ä¿±êº¯Êı¼ÓÈëµ½Ô­ÎÊÌâÄ£ĞÍ
+	//	å°†ç›®æ ‡å‡½æ•°åŠ å…¥åˆ°åŸé—®é¢˜æ¨¡å‹
 	submodel.add(IloMinimize(env, obj2));//
 	//obj1.end();
 	obj2.end();
@@ -4318,7 +4332,7 @@ bool SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloIntA
 	//**********************************//
 	//model.add(vF[nbCrane - 1] - vF[nbCrane - 2] <= 0);
 
-	//±äÁ¿¹Ì¶¨
+	//å˜é‡å›ºå®š
 	for (k = 0; k < nbCrane; k++)
 		for (i = 0; i < nbTask; i++)
 			submodel.add(xF[k][i] + yF[k][i] == yF_best[k][i]);
@@ -4356,7 +4370,7 @@ bool SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloIntA
 	submodel.add(c2);
 	c2.end();
 
-	// thetaF È¡Öµ
+	// thetaF å–å€¼
 	for (k = 0; k < nbCrane; k++)
 		for (j = 0; j < nbTask; j++)
 		{
@@ -4404,7 +4418,7 @@ bool SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloIntA
 	}
 
 
-	//Ô¼Êø£¨4£©// ËùÓĞÈÎÎñ±»·ÖÅäµ½QCÉÏ
+	//çº¦æŸï¼ˆ4ï¼‰// æ‰€æœ‰ä»»åŠ¡è¢«åˆ†é…åˆ°QCä¸Š
 	IloRangeArray  c4(env);
 	for (i = 0; i < nbTask; i++)
 	{
@@ -4417,7 +4431,7 @@ bool SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloIntA
 	submodel.add(c4);
 	c4.end();
 
-	////Ô¼Êø£¨5£©//endCzF È¡ÔÚ×îºóÒ»¸öxF´¦
+	////çº¦æŸï¼ˆ5ï¼‰//endCzF å–åœ¨æœ€åä¸€ä¸ªxFå¤„
 	//IloRangeArray  c5(env);
 	//for (i = 0; i < nbBay; i++)
 	//	for (k = 0; k < nbCrane; k++)
@@ -4433,7 +4447,7 @@ bool SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloIntA
 	//model.add(c5);
 	//c5.end();
 
-	//Ô¼Êø£¨6£©// zF Ğ¡ÓÚ×îĞ¡µÄxFµÄbay
+	//çº¦æŸï¼ˆ6ï¼‰// zF å°äºæœ€å°çš„xFçš„bay
 	IloRangeArray  c6(env);
 	for (i = 0; i < nbBay; i++)
 		for (k = 0; k < nbCrane; k++)
@@ -4463,7 +4477,7 @@ bool SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloIntA
 
 
 
-	//Ô¼Êø£¨7£© zF unique
+	//çº¦æŸï¼ˆ7ï¼‰ zF unique
 	IloRangeArray  c7(env);
 	for (k = 0; k < nbCrane; k++)
 	{
@@ -4488,7 +4502,7 @@ bool SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloIntA
 	c7.end();
 
 
-	//	½¨Á¢Ô¼Êø(8)  z ºÍ zÖ®¼ä¸ô /delta +1
+	//	å»ºç«‹çº¦æŸ(8)  z å’Œ zä¹‹é—´éš” /delta +1
 	IloRangeArray  c8(env);
 	for (k = 0; k < nbCrane - 1; k++)
 	{
@@ -4545,7 +4559,7 @@ bool SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloIntA
 
 	////////////////sub-problem
 
-	// vF È¡Öµ(2)
+	// vF å–å€¼(2)
 	for (k = 0; k < nbCrane; k++)
 	{
 		IloExpr  epa(env);
@@ -4567,7 +4581,7 @@ bool SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloIntA
 		submodel.add(epa >= 1);
 		epa.end();
 	}
-	// vF È¡Öµ(3) vFÓëviolation¹ØÏµ
+	// vF å–å€¼(3) vFä¸violationå…³ç³»
 	for (i = 0; i < nbTask - 1; i++)
 		for (j = i + 1; j < nbTask; j++)
 			if (nbprecR[i][j] == 1)
@@ -4702,7 +4716,7 @@ bool SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloIntA
 
 		}
 
-	/////Ô¼Êø£¨3£©
+	/////çº¦æŸï¼ˆ3ï¼‰
 	IloRangeArray  c3(env);
 	for (i = 0; i < nbBay - 2; i++)
 		for (k = 0; k < nbCrane - 1; k++)
@@ -4779,7 +4793,7 @@ bool SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloIntA
 	}
 
 	//**********************************//
-	//            ¿ªÊ¼Çó½â		        //
+	//            å¼€å§‹æ±‚è§£		        //
 	//**********************************//
 	IloCplex cplex(env);
 	cplex.extract(submodel);
@@ -4817,7 +4831,7 @@ bool SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, IloIntA
 		return false;
 	}
 	//**********************************//
-	//             ¼ÇÂ¼×îºÃ½â           //
+	//             è®°å½•æœ€å¥½è§£           //
 	//**********************************//
 
 	//*ObjVal = cplex.getBestObjValue();
@@ -4950,7 +4964,7 @@ bool Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nb
 	IloEnv env = model.getEnv();
 	IloInt i, j, k;
 
-	//ÎÊÌâÄ£ĞÍ
+	//é—®é¢˜æ¨¡å‹
 	IloModel submodel(env);
 	IloNumVarArray t0kF(env, nbCrane, 0, 100);
 	//IloNumVarArray betaF(env, nbCrane, 0, 100);
@@ -4978,25 +4992,25 @@ bool Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nb
 
 
 	//**********************************//
-	//            Ô­ÎÊÌâÄ¿±êº¯Êı        //
+	//            åŸé—®é¢˜ç›®æ ‡å‡½æ•°        //
 	//**********************************//
 
 	//IloExpr obj1(env); 
 
 
 	IloExpr  obj2(env);
-	//  ½¨Á¢×ÓÎÊÌâÄ¿±êº¯Êı±í´ïÊ½ 
+	//  å»ºç«‹å­é—®é¢˜ç›®æ ‡å‡½æ•°è¡¨è¾¾å¼ 
 
 	obj2 += CF;
 
-	//	½«Ä¿±êº¯Êı¼ÓÈëµ½Ô­ÎÊÌâÄ£ĞÍ
+	//	å°†ç›®æ ‡å‡½æ•°åŠ å…¥åˆ°åŸé—®é¢˜æ¨¡å‹
 	submodel.add(IloMinimize(env, obj2));//
 	//obj1.end();
 	obj2.end();
 
 
 	//**********************************//
-	//            MPÎÊÌâ Ô¼Êø           //
+	//            MPé—®é¢˜ çº¦æŸ           //
 	//**********************************//
 
 
@@ -5030,7 +5044,7 @@ bool Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nb
 	submodel.add(c2);
 	c2.end();
 
-	//Ô¼Êø£¨4£©
+	//çº¦æŸï¼ˆ4ï¼‰
 	IloRangeArray  c4(env);
 	for (i = 0; i < nbTask; i++)
 	{
@@ -5070,7 +5084,7 @@ bool Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nb
 			epa.end();
 		}
 
-	//Ô¼Êø£¨7£©
+	//çº¦æŸï¼ˆ7ï¼‰
 	IloRangeArray  c7(env);
 	for (k = 0; k < nbCrane; k++)
 	{
@@ -5114,7 +5128,7 @@ bool Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nb
 	}
 
 
-	//	½¨Á¢Ô¼Êø(8)
+	//	å»ºç«‹çº¦æŸ(8)
 	IloRangeArray  c8(env);
 	for (k = 0; k < nbCrane - 1; k++)
 	{
@@ -5168,7 +5182,7 @@ bool Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nb
 	c010.end();
 
 
-	//	½¨Á¢Ô¼Êø(9)
+	//	å»ºç«‹çº¦æŸ(9)
 	IloRangeArray  c9(env);
 	for (i = 0; i < nbTask; i++)
 		for (j = 0; j < nbTask; j++)
@@ -5188,7 +5202,7 @@ bool Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nb
 
 
 
-	//¶¨ÒåTF
+	//å®šä¹‰TF
 	for (k = 0; k < nbCrane; k++)
 		for (i = 0; i < nbBay; i++)//for (i = (1 + safe_margin) * k; i < nbBay - (1 + safe_margin) * (nbCrane - k - 1); i++)
 		{
@@ -5210,7 +5224,7 @@ bool Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nb
 
 		}
 
-	//Ô¼Êø£¨3£©
+	//çº¦æŸï¼ˆ3ï¼‰
 	IloRangeArray  c3(env);
 	for (k = 0; k < nbCrane - 1; k++)
 		for (i = 0; i < nbBay - 1 - safe_margin; i++)//for (i = 2 * k; i < nbBay - 2 * (nbCrane - k - 1); i++)
@@ -5238,7 +5252,7 @@ bool Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nb
 
 
 	//**********************************//
-	//            ¿ªÊ¼Çó½â		        //
+	//            å¼€å§‹æ±‚è§£		        //
 	//**********************************//
 	IloCplex cplex(env);
 	cplex.extract(submodel);
@@ -5257,13 +5271,13 @@ bool Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nb
 	//char C4[3];
 	//itoa(my, C1, 10);
 
-	////´Ë´¦¿É±à¼­¹æÄ££¬ÒÔÊäÈë
+	////æ­¤å¤„å¯ç¼–è¾‘è§„æ¨¡ï¼Œä»¥è¾“å…¥
 	//itoa(nbBay, C2, 10);
 	//itoa(nbCrane, C3, 10);
 	//itoa(nbTask, C4, 10);
 
 	//strcpy(filename1, "LP_file/");
-	////´Ë´¦¿É±à¼­¹æÄ££¬ÒÔÊäÈë
+	////æ­¤å¤„å¯ç¼–è¾‘è§„æ¨¡ï¼Œä»¥è¾“å…¥
 	//strcat(filename1, C4);
 	//strcat(filename1, "-");
 	//strcat(filename1, C2);
@@ -5312,7 +5326,7 @@ bool Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nb
 		return false;
 	}
 	//**********************************//
-	//             ¼ÇÂ¼×îºÃ½â           //
+	//             è®°å½•æœ€å¥½è§£           //
 	//**********************************//
 
 	//*GapF=cplex.getMIPRelativeGap();
@@ -5405,7 +5419,7 @@ bool LB_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 	IloEnv env = model.getEnv();
 	IloInt i, j, k;
 
-	//ÎÊÌâÄ£ĞÍ
+	//é—®é¢˜æ¨¡å‹
 	IloModel submodel(env);
 	IloNumVarArray t0kF(env, nbCrane, 0, 100);
 	//IloNumVarArray betaF(env, nbCrane, 0, 100);
@@ -5433,25 +5447,25 @@ bool LB_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 
 
 	//**********************************//
-	//            Ô­ÎÊÌâÄ¿±êº¯Êı        //
+	//            åŸé—®é¢˜ç›®æ ‡å‡½æ•°        //
 	//**********************************//
 
 	//IloExpr obj1(env); 
 
 
 	IloExpr  obj2(env);
-	//  ½¨Á¢×ÓÎÊÌâÄ¿±êº¯Êı±í´ïÊ½ 
+	//  å»ºç«‹å­é—®é¢˜ç›®æ ‡å‡½æ•°è¡¨è¾¾å¼ 
 
 	obj2 += CF;
 
-	//	½«Ä¿±êº¯Êı¼ÓÈëµ½Ô­ÎÊÌâÄ£ĞÍ
+	//	å°†ç›®æ ‡å‡½æ•°åŠ å…¥åˆ°åŸé—®é¢˜æ¨¡å‹
 	submodel.add(IloMinimize(env, obj2));//
 	//obj1.end();
 	obj2.end();
 
 
 	//**********************************//
-	//            MPÎÊÌâ Ô¼Êø           //
+	//            MPé—®é¢˜ çº¦æŸ           //
 	//**********************************//
 
 
@@ -5488,7 +5502,7 @@ bool LB_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 	submodel.add(c2);
 	c2.end();
 
-	//Ô¼Êø£¨4£©
+	//çº¦æŸï¼ˆ4ï¼‰
 	IloRangeArray  c4(env);
 	for (i = 0; i < nbTask; i++)
 	{
@@ -5528,7 +5542,7 @@ bool LB_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 			epa.end();
 		}
 
-	//Ô¼Êø£¨7£©
+	//çº¦æŸï¼ˆ7ï¼‰
 	IloRangeArray  c7(env);
 	for (k = 0; k < nbCrane; k++)
 	{
@@ -5572,7 +5586,7 @@ bool LB_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 	}
 
 
-	//	½¨Á¢Ô¼Êø(8)
+	//	å»ºç«‹çº¦æŸ(8)
 	IloRangeArray  c8(env);
 	for (k = 0; k < nbCrane - 1; k++)
 	{
@@ -5626,7 +5640,7 @@ bool LB_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 	c010.end();
 
 
-	////	½¨Á¢Ô¼Êø(9)
+	////	å»ºç«‹çº¦æŸ(9)
 	//IloRangeArray  c9(env);
 	//for (i = 0; i < nbTask; i++)
 	//	for (j = 0; j < nbTask; j++)
@@ -5647,7 +5661,7 @@ bool LB_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 
 
 
-	//¶¨ÒåTF
+	//å®šä¹‰TF
 	for (k = 0; k < nbCrane; k++)
 		for (i = 0; i < nbBay; i++)//for (i = (1 + safe_margin) * k; i < nbBay - (1 + safe_margin) * (nbCrane - k - 1); i++)
 		{
@@ -5670,7 +5684,7 @@ bool LB_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 
 		}
 
-	//Ô¼Êø£¨3£©
+	//çº¦æŸï¼ˆ3ï¼‰
 	IloRangeArray  c3(env);
 	for (k = 0; k < nbCrane - 1; k++)
 		for (i = 0; i < nbBay - 1 - safe_margin; i++)//for (i = 2 * k; i < nbBay - 2 * (nbCrane - k - 1); i++)
@@ -5725,7 +5739,7 @@ bool LB_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 
 
 	//**********************************//
-	//            ¿ªÊ¼Çó½â		        //
+	//            å¼€å§‹æ±‚è§£		        //
 	//**********************************//
 	IloCplex cplex(env);
 	cplex.extract(submodel);
@@ -5744,13 +5758,13 @@ bool LB_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 	//char C4[3];
 	//itoa(my, C1, 10);
 
-	////´Ë´¦¿É±à¼­¹æÄ££¬ÒÔÊäÈë
+	////æ­¤å¤„å¯ç¼–è¾‘è§„æ¨¡ï¼Œä»¥è¾“å…¥
 	//itoa(nbBay, C2, 10);
 	//itoa(nbCrane, C3, 10);
 	//itoa(nbTask, C4, 10);
 
 	//strcpy(filename1, "LP_file/");
-	////´Ë´¦¿É±à¼­¹æÄ££¬ÒÔÊäÈë
+	////æ­¤å¤„å¯ç¼–è¾‘è§„æ¨¡ï¼Œä»¥è¾“å…¥
 	//strcat(filename1, C4);
 	//strcat(filename1, "-");
 	//strcat(filename1, C2);
@@ -5799,7 +5813,7 @@ bool LB_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 		return false;
 	}
 	//**********************************//
-	//             ¼ÇÂ¼×îºÃ½â           //
+	//             è®°å½•æœ€å¥½è§£           //
 	//**********************************//
 
 	//*GapF=cplex.getMIPRelativeGap();
@@ -5894,7 +5908,7 @@ bool C2_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 	IloInt i, j, k;
 
 
-	//ÎÊÌâÄ£ĞÍ
+	//é—®é¢˜æ¨¡å‹
 	IloModel submodel(env);
 	BoolVarMatrix CuF(env, nbCrane);
 	for (k = 0; k < nbCrane; k++)
@@ -5921,25 +5935,25 @@ bool C2_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 		TF[k] = IloNumVarArray(env, nbBay, -100, IloInfinity);
 
 	//**********************************//
-	//            Ô­ÎÊÌâÄ¿±êº¯Êı        //
+	//            åŸé—®é¢˜ç›®æ ‡å‡½æ•°        //
 	//**********************************//
 
 	//IloExpr obj1(env); 
 
 
 	IloExpr  obj2(env);
-	//  ½¨Á¢×ÓÎÊÌâÄ¿±êº¯Êı±í´ïÊ½ 
+	//  å»ºç«‹å­é—®é¢˜ç›®æ ‡å‡½æ•°è¡¨è¾¾å¼ 
 
 	obj2 += CF;
 
-	//	½«Ä¿±êº¯Êı¼ÓÈëµ½Ô­ÎÊÌâÄ£ĞÍ
+	//	å°†ç›®æ ‡å‡½æ•°åŠ å…¥åˆ°åŸé—®é¢˜æ¨¡å‹
 	submodel.add(IloMinimize(env, obj2));//
 	//obj1.end();
 	obj2.end();
 
 
 	//**********************************//
-	//            MPÎÊÌâ Ô¼Êø           //
+	//            MPé—®é¢˜ çº¦æŸ           //
 	//**********************************//
 
 	//IloRangeArray  c0(env);
@@ -5994,7 +6008,7 @@ bool C2_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 	submodel.add(c2);
 	c2.end();
 
-	//Ô¼Êø£¨3£©
+	//çº¦æŸï¼ˆ3ï¼‰
 	IloRangeArray  c3(env);
 	for (i = 0; i < nbBay - 2; i++)
 		for (k = 0; k < nbCrane - 1; k++)
@@ -6011,7 +6025,7 @@ bool C2_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 	submodel.add(c3);
 	c3.end();
 
-	//Ô¼Êø£¨4£©
+	//çº¦æŸï¼ˆ4ï¼‰
 	IloRangeArray  c4(env);
 	for (i = 0; i < nbTask; i++)
 	{
@@ -6024,7 +6038,7 @@ bool C2_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 	submodel.add(c4);
 	c4.end();
 
-	////Ô¼Êø£¨40£©
+	////çº¦æŸï¼ˆ40ï¼‰
 	//IloRangeArray  c40(env);
 	//for (k = 0; k < nbCrane; k++)
 	//{
@@ -6037,7 +6051,7 @@ bool C2_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 	//submodel.add(c40);
 	//c40.end();
 
-	//Ô¼Êø£¨5£©
+	//çº¦æŸï¼ˆ5ï¼‰
 	IloRangeArray  c5(env);
 	for (i = 0; i < nbTask; i++)
 		for (k = 0; k < nbCrane; k++)
@@ -6052,7 +6066,7 @@ bool C2_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 	submodel.add(c5);
 	c5.end();
 
-	//Ô¼Êø£¨6£©
+	//çº¦æŸï¼ˆ6ï¼‰
 	IloRangeArray  c6(env);
 	for (i = 0; i < nbTask; i++)
 		for (k = 0; k < nbCrane; k++)
@@ -6068,7 +6082,7 @@ bool C2_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 
 
 
-	//	½¨Á¢Ô¼Êø(9)
+	//	å»ºç«‹çº¦æŸ(9)
 	IloRangeArray  c9(env);
 	for (i = 0; i < nbTask; i++)
 		for (j = 0; j < nbTask; j++)
@@ -6087,7 +6101,7 @@ bool C2_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 	c9.end();
 
 
-	//Ô¼Êø£¨5£©
+	//çº¦æŸï¼ˆ5ï¼‰
 	IloRangeArray  c10a(env);
 	for (i = 0; i < nbBay; i++)
 		for (k = 0; k < nbCrane; k++)
@@ -6108,7 +6122,7 @@ bool C2_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 	c10a.end();
 
 
-	//Ô¼Êø£¨5£©
+	//çº¦æŸï¼ˆ5ï¼‰
 	IloRangeArray  c10a2(env);
 	for (i = 0; i < nbBay; i++)
 		for (k = 0; k < nbCrane; k++)
@@ -6165,7 +6179,7 @@ bool C2_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 
 
 	//**********************************//
-	//            ¿ªÊ¼Çó½â		        //
+	//            å¼€å§‹æ±‚è§£		        //
 	//**********************************//
 	IloCplex cplex(env);
 	cplex.extract(submodel);
@@ -6182,13 +6196,13 @@ bool C2_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 	//char C4[3];
 	//itoa(my, C1, 10);
 
-	////´Ë´¦¿É±à¼­¹æÄ££¬ÒÔÊäÈë
+	////æ­¤å¤„å¯ç¼–è¾‘è§„æ¨¡ï¼Œä»¥è¾“å…¥
 	//itoa(nbBay, C2, 10);
 	//itoa(nbCrane, C3, 10);
 	//itoa(nbTask, C4, 10);
 
 	//strcpy(filename1, "LP_file/");
-	////´Ë´¦¿É±à¼­¹æÄ££¬ÒÔÊäÈë
+	////æ­¤å¤„å¯ç¼–è¾‘è§„æ¨¡ï¼Œä»¥è¾“å…¥
 	//strcat(filename1, C4);
 	//strcat(filename1, "-");
 	//strcat(filename1, C2);
@@ -6236,7 +6250,7 @@ bool C2_Same_Direction(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray
 		return false;
 	}
 	//**********************************//
-	//             ¼ÇÂ¼×îºÃ½â           //
+	//             è®°å½•æœ€å¥½è§£           //
 	//**********************************//
 
 	//*GapF=cplex.getMIPRelativeGap();
@@ -6351,10 +6365,10 @@ bool Split_SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, I
 	IloEnv env = model.getEnv();
 	IloInt i, j, k;
 
-	//ÎÊÌâÄ£ĞÍ
+	//é—®é¢˜æ¨¡å‹
 	IloModel submodel(env);
 
-	//ÎÊÌâÄ£ĞÍ
+	//é—®é¢˜æ¨¡å‹
 	IloNumVarArray t0kF(env, nbCrane, 0, 100);
 	IloNumVarArray gammaF(env, nbCrane, 0, 100);//
 
@@ -6391,21 +6405,21 @@ bool Split_SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, I
 
 
 	//**********************************//
-	//           objective Ô­ÎÊÌâÄ¿±êº¯Êı        //
+	//           objective åŸé—®é¢˜ç›®æ ‡å‡½æ•°        //
 	//**********************************//
 
 	//IloExpr obj1(env); 
 
 
 	IloExpr  obj2(env);
-	//  ½¨Á¢×ÓÎÊÌâÄ¿±êº¯Êı±í´ïÊ½ 
+	//  å»ºç«‹å­é—®é¢˜ç›®æ ‡å‡½æ•°è¡¨è¾¾å¼ 
 
 	obj2 += CF;
 
 	//for (k = 0; k < nbCrane; k++)
 	//	obj2 += chaF[k];
 
-	//	½«Ä¿±êº¯Êı¼ÓÈëµ½Ô­ÎÊÌâÄ£ĞÍ
+	//	å°†ç›®æ ‡å‡½æ•°åŠ å…¥åˆ°åŸé—®é¢˜æ¨¡å‹
 	submodel.add(IloMinimize(env, obj2));//
 	//obj1.end();
 	obj2.end();
@@ -6451,7 +6465,7 @@ bool Split_SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, I
 	//**********************************//
 	//model.add(vF[nbCrane - 1] - vF[nbCrane - 2] <= 0);
 
-	////Ô¼Êø£¨4£©// ËùÓĞÈÎÎñ±»·ÖÅäµ½QCÉÏ
+	////çº¦æŸï¼ˆ4ï¼‰// æ‰€æœ‰ä»»åŠ¡è¢«åˆ†é…åˆ°QCä¸Š
 	//IloRangeArray  c4(env);
 	//for (i = 0; i < nbTask; i++)
 	//{
@@ -6464,7 +6478,7 @@ bool Split_SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, I
 	//submodel.add(c4);
 	//c4.end();
 
-	//±äÁ¿¹Ì¶¨
+	//å˜é‡å›ºå®š
 	for (k = QC; k <= QC + 1; k++)
 		for (i = 0; i < nbTask; i++)
 			if (yF_best[k][i] == 1)
@@ -6506,7 +6520,7 @@ bool Split_SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, I
 	submodel.add(c2);
 	c2.end();
 
-	// thetaF È¡Öµ
+	// thetaF å–å€¼
 	for (k = QC; k <= QC + 1; k++)
 		for (j = 0; j < nbTask; j++)
 		{
@@ -6546,7 +6560,7 @@ bool Split_SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, I
 		epa.end();
 	}
 
-	//Ô¼Êø£¨6£©// zF Ğ¡ÓÚ×îĞ¡µÄxFµÄbay
+	//çº¦æŸï¼ˆ6ï¼‰// zF å°äºæœ€å°çš„xFçš„bay
 	IloRangeArray  c6(env);
 	for (i = 0; i < nbBay; i++)
 		for (k = QC; k <= QC + 1; k++)
@@ -6576,7 +6590,7 @@ bool Split_SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, I
 
 
 
-	//Ô¼Êø£¨7£© zF unique
+	//çº¦æŸï¼ˆ7ï¼‰ zF unique
 	IloRangeArray  c7(env);
 	for (k = QC; k <= QC + 1; k++)
 	{
@@ -6601,7 +6615,7 @@ bool Split_SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, I
 	c7.end();
 
 
-	//	½¨Á¢Ô¼Êø(8)  z ºÍ zÖ®¼ä¸ô /delta +1
+	//	å»ºç«‹çº¦æŸ(8)  z å’Œ zä¹‹é—´éš” /delta +1
 	IloRangeArray  c8(env);
 	for (k = QC; k <= QC; k++)
 	{
@@ -6658,7 +6672,7 @@ bool Split_SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, I
 
 	////////////////sub-problem
 
-	// vF È¡Öµ(2)
+	// vF å–å€¼(2)
 	for (k = QC; k <= QC + 1; k++)
 	{
 		IloExpr  epa(env);
@@ -6680,7 +6694,7 @@ bool Split_SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, I
 		submodel.add(epa >= 1);
 		epa.end();
 	}
-	//// vF È¡Öµ(3) vFÓëviolation¹ØÏµ
+	//// vF å–å€¼(3) vFä¸violationå…³ç³»
 	//for (i = 0; i < nbTask - 1; i++)
 	//	for (j = i + 1; j < nbTask; j++)
 	//		if (nbprecR[i][j] == 1)
@@ -6815,7 +6829,7 @@ bool Split_SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, I
 
 		}
 
-	/////Ô¼Êø£¨3£©
+	/////çº¦æŸï¼ˆ3ï¼‰
 	IloRangeArray  c3(env);
 	for (i = 0; i < nbBay - 2; i++)
 		for (k = QC; k <= QC; k++)
@@ -6892,7 +6906,7 @@ bool Split_SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, I
 	}
 
 	//**********************************//
-	//            ¿ªÊ¼Çó½â		        //
+	//            å¼€å§‹æ±‚è§£		        //
 	//**********************************//
 	IloCplex cplex(env);
 	cplex.extract(submodel);
@@ -6930,7 +6944,7 @@ bool Split_SP_1(IloModel model, IloNum nbs, IloIntArray  nbb, IloNumArray nbQ, I
 		return false;
 	}
 	//**********************************//
-	//             ¼ÇÂ¼×îºÃ½â           //
+	//             è®°å½•æœ€å¥½è§£           //
 	//**********************************//
 
 	//*ObjVal = cplex.getBestObjValue();
@@ -7066,7 +7080,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 	IloInt i, j, k;
 	IloInt ObjVal;
 
-	//ÎÊÌâÄ£ĞÍ
+	//é—®é¢˜æ¨¡å‹
 	IloModel submodel(env);
 
 	IloIntVar CF(env, 0, 1800);
@@ -7083,7 +7097,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 	}
 	IloBoolVarArray vF(env, nbCrane);
 
-	//ÎÊÌâÄ£ĞÍ
+	//é—®é¢˜æ¨¡å‹
 	IloNumVarArray t0kF(env, nbCrane, 0, 100);
 	IloNumVarArray gammaF(env, nbCrane, 0, 100);//
 
@@ -7128,21 +7142,21 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 
 
 	//**********************************//
-	//           objective Ô­ÎÊÌâÄ¿±êº¯Êı        //
+	//           objective åŸé—®é¢˜ç›®æ ‡å‡½æ•°        //
 	//**********************************//
 
 	//IloExpr obj1(env); 
 
 
 	IloExpr  obj2(env);
-	//  ½¨Á¢×ÓÎÊÌâÄ¿±êº¯Êı±í´ïÊ½ 
+	//  å»ºç«‹å­é—®é¢˜ç›®æ ‡å‡½æ•°è¡¨è¾¾å¼ 
 
 	obj2 += CF;
 
 	//for (k = 0; k < nbCrane; k++)
 	//	obj2 += chaF[k];
 
-	//	½«Ä¿±êº¯Êı¼ÓÈëµ½Ô­ÎÊÌâÄ£ĞÍ
+	//	å°†ç›®æ ‡å‡½æ•°åŠ å…¥åˆ°åŸé—®é¢˜æ¨¡å‹
 	submodel.add(IloMinimize(env, obj2));//
 	//obj1.end();
 	obj2.end();
@@ -7191,7 +7205,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 		//**********************************//
 		//model.add(vF[nbCrane - 1] - vF[nbCrane - 2] <= 0);
 
-		////Ô¼Êø£¨4£©// ËùÓĞÈÎÎñ±»·ÖÅäµ½QCÉÏ
+		////çº¦æŸï¼ˆ4ï¼‰// æ‰€æœ‰ä»»åŠ¡è¢«åˆ†é…åˆ°QCä¸Š
 		//IloRangeArray  c4(env);
 		//for (i = 0; i < nbTask; i++)
 		//{
@@ -7204,7 +7218,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 		//submodel.add(c4);
 		//c4.end();
 
-		//±äÁ¿¹Ì¶¨
+		//å˜é‡å›ºå®š
 		for (k = QC; k <= QC + 1; k++)
 			for (i = 0; i < nbTask; i++)
 
@@ -7253,7 +7267,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 		submodel.add(c2);
 		c2.end();
 
-		// thetaF È¡Öµ
+		// thetaF å–å€¼
 		for (k = QC; k <= QC + 1; k++)
 			for (j = 0; j < nbTask; j++)
 			{
@@ -7294,7 +7308,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 				epa.end();
 			}
 
-		//Ô¼Êø£¨6£©// zF Ğ¡ÓÚ×îĞ¡µÄxFµÄbay
+		//çº¦æŸï¼ˆ6ï¼‰// zF å°äºæœ€å°çš„xFçš„bay
 		IloRangeArray  c6(env);
 		for (i = 0; i < nbBay; i++)
 			for (k = QC; k <= QC + 1; k++)
@@ -7324,7 +7338,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 
 
 
-		//Ô¼Êø£¨7£© zF unique
+		//çº¦æŸï¼ˆ7ï¼‰ zF unique
 		IloRangeArray  c7(env);
 		for (k = QC; k <= QC + 1; k++)
 		{
@@ -7349,7 +7363,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 		c7.end();
 
 
-		//	½¨Á¢Ô¼Êø(8)  z ºÍ zÖ®¼ä¸ô /delta +1
+		//	å»ºç«‹çº¦æŸ(8)  z å’Œ zä¹‹é—´éš” /delta +1
 		IloRangeArray  c8(env);
 		for (k = QC; k <= QC; k++)
 		{
@@ -7406,7 +7420,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 
 		////////////////sub-problem
 
-		// vF È¡Öµ(2)
+		// vF å–å€¼(2)
 		for (k = QC; k <= QC + 1; k++)
 		{
 			IloExpr  epa(env);
@@ -7428,7 +7442,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 			submodel.add(epa >= 1);
 			epa.end();
 		}
-		//// vF È¡Öµ(3) vFÓëviolation¹ØÏµ
+		//// vF å–å€¼(3) vFä¸violationå…³ç³»
 		//for (i = 0; i < nbTask - 1; i++)
 		//	for (j = i + 1; j < nbTask; j++)
 		//		if (nbprecR[i][j] == 1)
@@ -7563,7 +7577,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 
 			}
 
-		/////Ô¼Êø£¨3£©
+		/////çº¦æŸï¼ˆ3ï¼‰
 		IloRangeArray  c3(env);
 		for (i = 0; i < nbBay - 2; i++)
 			for (k = QC; k <= QC; k++)
@@ -7675,7 +7689,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 		//**********************************//
 		//model.add(vF[nbCrane - 1] - vF[nbCrane - 2] <= 0);
 
-		//±äÁ¿¹Ì¶¨
+		//å˜é‡å›ºå®š
 		for (k = 0; k < nbCrane; k++)
 			for (i = 0; i < nbTask; i++)
 				submodel.add(xF[k][i] + yF[k][i] == yF_best[k][i]);
@@ -7713,7 +7727,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 		submodel.add(c2);
 		c2.end();
 
-		// thetaF È¡Öµ
+		// thetaF å–å€¼
 		for (k = 0; k < nbCrane; k++)
 			for (j = 0; j < nbTask; j++)
 			{
@@ -7762,7 +7776,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 			}
 
 
-		//Ô¼Êø£¨4£©// ËùÓĞÈÎÎñ±»·ÖÅäµ½QCÉÏ
+		//çº¦æŸï¼ˆ4ï¼‰// æ‰€æœ‰ä»»åŠ¡è¢«åˆ†é…åˆ°QCä¸Š
 		IloRangeArray  c4(env);
 		for (i = 0; i < nbTask; i++)
 		{
@@ -7775,7 +7789,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 		submodel.add(c4);
 		c4.end();
 
-		////Ô¼Êø£¨5£©//endCzF È¡ÔÚ×îºóÒ»¸öxF´¦
+		////çº¦æŸï¼ˆ5ï¼‰//endCzF å–åœ¨æœ€åä¸€ä¸ªxFå¤„
 		//IloRangeArray  c5(env);
 		//for (i = 0; i < nbBay; i++)
 		//	for (k = 0; k < nbCrane; k++)
@@ -7791,7 +7805,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 		//model.add(c5);
 		//c5.end();
 
-		//Ô¼Êø£¨6£©// zF Ğ¡ÓÚ×îĞ¡µÄxFµÄbay
+		//çº¦æŸï¼ˆ6ï¼‰// zF å°äºæœ€å°çš„xFçš„bay
 		IloRangeArray  c6(env);
 		for (i = 0; i < nbBay; i++)
 			for (k = 0; k < nbCrane; k++)
@@ -7821,7 +7835,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 
 
 
-		//Ô¼Êø£¨7£© zF unique
+		//çº¦æŸï¼ˆ7ï¼‰ zF unique
 		IloRangeArray  c7(env);
 		for (k = 0; k < nbCrane; k++)
 		{
@@ -7846,7 +7860,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 		c7.end();
 
 
-		//	½¨Á¢Ô¼Êø(8)  z ºÍ zÖ®¼ä¸ô /delta +1
+		//	å»ºç«‹çº¦æŸ(8)  z å’Œ zä¹‹é—´éš” /delta +1
 		IloRangeArray  c8(env);
 		for (k = 0; k < nbCrane - 1; k++)
 			if ((1 + safe_margin) * (k + 1) + 1 <= nbBay)
@@ -7905,7 +7919,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 
 		////////////////sub-problem
 
-		// vF È¡Öµ(2)
+		// vF å–å€¼(2)
 		for (k = 0; k < nbCrane; k++)
 		{
 			IloExpr  epa(env);
@@ -7927,7 +7941,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 			submodel.add(epa >= 1);
 			epa.end();
 		}
-		// vF È¡Öµ(3) vFÓëviolation¹ØÏµ
+		// vF å–å€¼(3) vFä¸violationå…³ç³»
 		for (i = 0; i < nbTask - 1; i++)
 			for (j = i + 1; j < nbTask; j++)
 				if (nbprecR[i][j] == 1)
@@ -8062,7 +8076,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 
 			}
 
-		/////Ô¼Êø£¨3£©
+		/////çº¦æŸï¼ˆ3ï¼‰
 		IloRangeArray  c3(env);
 		for (i = 0; i < nbBay - 1 - safe_margin; i++)
 			for (k = 0; k < nbCrane - 1; k++)
@@ -8141,7 +8155,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 
 
 	//**********************************//
-	//            ¿ªÊ¼Çó½â		        //
+	//            å¼€å§‹æ±‚è§£		        //
 	//**********************************//
 	//IloCplex subcplex(env);
 	cplex.extract(submodel);
@@ -8180,7 +8194,7 @@ IloInt Split_SP_Callback(IloInt solmode, IloCplex cplex, IloNumArray nbQ, int* n
 		return 0;
 	}
 	//**********************************//
-	//             ¼ÇÂ¼×îºÃ½â           //
+	//             è®°å½•æœ€å¥½è§£           //
 	//**********************************//
 
 	//*ObjVal = cplex.getBestObjValue();
