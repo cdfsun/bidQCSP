@@ -2073,7 +2073,8 @@ int _tmain(int argc, char* argv[], char* envp[])
 			cplex.extract(model);
 
 
-
+            float gaptolerance;
+			gaptolerance = 1 / LB0;
 
 
 #ifdef UserActive
@@ -2087,7 +2088,7 @@ int _tmain(int argc, char* argv[], char* envp[])
 
 
 			//cplex.setParam(IloCplex::MIPEmphasis, CPX_MIPEMPHASIS_FEASIBILITY);
-			//cplex.setParam(IloCplex::EpGap, 0.001);
+			cplex.setParam(IloCplex::EpGap, gaptolerance);
 			//cplex.setOut(env.getNullStream());
 			cplex.setParam(IloCplex::TiLim, time_left);
 			//cplex.setParam(IloCplex::Threads, 4);
